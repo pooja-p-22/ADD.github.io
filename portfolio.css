@@ -1,0 +1,500 @@
+        /* Previous styles remain the same until nav-content */
+        * {
+            margin: 3px;
+            padding: 3px;
+            box-sizing: border-box; 
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            --bg-primary: #918383;
+            --bg-secondary: #cbb7b7;
+            --accent: #00bfff;
+            --text: #030303;
+            --text-secondary: #888888;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text);
+            line-height: 2;
+            overflow-x: hidden;
+    
+        }
+        .front{
+        background-image: url('images/section1.jpg');
+        background-size: cover;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        }
+
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            transition: all 0.1s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .nav {
+            background-image: url('images/sandalbg.jpg');
+            padding: 1px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo { 
+            width: 70px;
+            height: 70px;
+
+        }
+
+
+        /* New Social Media Links Styles */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-link:hover {
+            color: var(--bg-primary);
+        }
+
+        .nav-link:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Rest of the previous styles remain the same */
+        .nav-logo::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            left: -100%;
+            top: 0;
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-logo:hover::after {
+            transform: translateX(100%);
+        }
+
+       
+
+        .front-content {
+            text-align: center;
+            z-index: 1;
+
+        }
+
+        .front h1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            position: relative;
+            opacity: 0;
+            animation: slideUpFade 1s ease forwards;
+        }
+
+        .front p {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: slideUpFade 1s ease forwards 0.3s;
+        } 
+    
+
+        .about-section {
+            background-image: url('images/sandalbg.jpg');
+            object-fit: cover;
+            padding: 50px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+        /* Projects Section 
+        1.grid 2.cubic-beizier*/
+        .projects {
+            padding: 8rem 2rem;
+            background-image: url('images/sandalbg.jpg');
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .project1-image, .project2-image {
+            width: 100%;
+            height: 270px;
+            padding: 30px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .project3-image{
+            width: 100%;
+            height: 300px;
+            padding: 30px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .project-card {
+            position: relative;
+            background: var(--bg-secondary);
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);  
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 50px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 2rem;
+            position: relative;
+            background: var(--bg-secondary);
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-content {
+            transform: translateY(0); /*<-- used to hover the view project*/
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.2s;
+        }
+
+        .project-card:hover .project-title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-description {
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.3s;
+        }
+
+        .project-card:hover .project-description {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--accent);
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.4s;
+        }
+
+        .project-card:hover .project-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+      
+
+        /* Certifications Section */
+        .certifications {
+            background-image: url('images/sandalbg.jpg');
+            padding: 40px 20px;
+          }
+      
+          .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+          }
+      
+          .cert-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            transition: transform 0.2s;
+            text-decoration: none;
+            display: block;
+          }
+      
+          .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+          }
+      
+          .cert-icon {
+            width: 60px;
+            height: 60px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+          }
+      
+          .cert-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #333;
+          }
+      
+          .cert-issuer {
+            color: #666;
+            font-size: 0.9rem;
+          }
+      
+          .cert-date {
+            color: #888;
+            font-size: 0.8rem;
+            margin-top: 10px;
+          }
+      
+          .verify-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #007bff;
+            font-size: 0.9rem;
+            text-decoration: underline;
+          }
+
+        /* Contact Section */
+        .contact-section {
+            background-image: url('images/sandalbg.jpg');
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .contact-container {
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .contact-header h2 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+
+        .contact-form {
+            margin-bottom: 30px;
+        }
+
+        
+        .submit-btn {
+            background: #007bff;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+
+        .linkedin {
+            background: #0077B5;
+        }
+
+        .instagram {
+            background: #E4405F;
+        }
+
+        .twitter {
+            background: #1DA1F2;
+        }
+
+        .facebook {
+            background: #1877F2;
+        }
+
+        .social-links i {
+            color: white;
+            font-size: 20px;
+        }
+
+        
+        /* Keyframes */
+        @keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .projects {
+                padding: 4rem 1rem;
+            }
+            
+            .project-card {
+                margin-bottom: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+            .social-link {
+                display: block;
+            }
+
+            .nav-mobile-menu {
+                display: block;
+            }
+        }
+    
